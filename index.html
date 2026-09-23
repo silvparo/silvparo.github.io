@@ -40,9 +40,7 @@ body {
   overflow-y: auto;
 }
 
-button,
-input,
-select {
+button, input, select {
   font: inherit;
 }
 
@@ -64,7 +62,6 @@ header {
 
 .brand {
   width: 100%;
-  margin: 0;
   text-align: center;
   font-size: 24px;
   line-height: 34px;
@@ -205,7 +202,7 @@ header {
   display: block;
 }
 
-/* NORMAL PAGE LAYOUT */
+/* MAIN */
 
 main {
   width: min(100%, 800px);
@@ -215,8 +212,6 @@ main {
   flex-direction: column;
   gap: 12px;
 }
-
-/* SINGLE PROFILE CARD */
 
 .deck {
   position: relative;
@@ -257,31 +252,25 @@ main {
   pointer-events: none;
 }
 
-/* MATCHING TOP CORNER BADGES */
+/* PROFILE BADGES */
 
 .profile-views,
 .report-btn {
   position: absolute;
   top: 12px;
   z-index: 10;
-
   height: 29px;
   padding: 7px 10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: 0;
   border-radius: 999px;
-
   background: rgba(0, 0, 0, .58);
   color: white;
-
   font-size: 12px;
   font-weight: 800;
   line-height: 1;
-
   backdrop-filter: blur(8px);
 }
 
@@ -293,16 +282,10 @@ main {
 .report-btn {
   right: 12px;
   min-width: 29px;
-  cursor: pointer;
 }
 
 .report-btn:hover {
-  background: #ef4444;
-}
-
-.report-btn:disabled {
-  opacity: .5;
-  cursor: wait;
+  background: var(--no);
 }
 
 /* ACTION BUTTONS */
@@ -325,11 +308,11 @@ main {
   font-weight: 850;
 }
 
-.action#no {
+#no {
   background: var(--no);
 }
 
-.action#yes {
+#yes {
   background: var(--yes);
 }
 
@@ -385,14 +368,27 @@ main {
   letter-spacing: normal;
 }
 
+/* CENTERED SMALL CLOSE ICON */
+
 .close {
   width: 35px;
   height: 35px;
+  min-width: 35px;
   flex-shrink: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: 50%;
   background: #f2f1ed;
-  font-size: 18px;
+  color: #111;
+}
+
+.close svg {
+  display: block;
+  width: 15px;
+  height: 15px;
 }
 
 .field {
@@ -428,6 +424,11 @@ main {
   font-weight: 850;
 }
 
+.submit:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+
 .msg {
   min-height: 18px;
   margin-top: 10px;
@@ -436,14 +437,25 @@ main {
   font-size: 12px;
 }
 
-.ghost {
+/* GOT IT BUTTON */
+
+.got-it {
   width: 100%;
+  min-height: 46px;
   padding: 13px;
   border: 0;
-  background: transparent;
-  color: #777;
-  font-weight: 700;
+  border-radius: 14px;
+  background: #111;
+  color: white;
+  font-size: 14px;
+  font-weight: 850;
 }
+
+.got-it:hover {
+  background: #333;
+}
+
+/* INSTALL HELP */
 
 .install-now {
   display: none;
@@ -479,6 +491,8 @@ main {
   line-height: 1.45;
 }
 
+/* REGISTRATION */
+
 .instagram-input {
   width: 100%;
   display: flex;
@@ -502,6 +516,60 @@ main {
   min-width: 0;
   border: 0;
   padding-left: 2px;
+}
+
+/* CUSTOM REPORT MODAL */
+
+.report-sheet {
+  width: min(100%, 420px);
+}
+
+.report-description {
+  margin: 0 0 20px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.report-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.report-action {
+  min-height: 46px;
+  padding: 12px;
+  border: 0;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.report-cancel {
+  background: #f2f1ed;
+  color: #111;
+}
+
+.report-confirm {
+  background: var(--no);
+  color: white;
+}
+
+.report-action:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+
+.report-error {
+  margin-top: 12px;
+  color: #dc2626;
+  font-size: 13px;
+  text-align: center;
+}
+
+.report-error:empty {
+  display: none;
 }
 
 /* MOBILE */
@@ -560,7 +628,6 @@ main {
   }
 
   .deck {
-    aspect-ratio: 4 / 5;
     max-height: 65vh;
   }
 
@@ -669,7 +736,7 @@ main {
             stroke-linejoin="round"
           />
           <path
-            d="M7 11H5.75C4.78 11 4 11.78 4 12.75V18.25C4 19.22 4.78 20 5.75 20H18.25C19.22 20 20 19.22 20 18.25V12.75C20 11.78 19.22 11 18.25V12.75C20 11.78 19.22 11 18.25 11H17"
+            d="M7 11H5.75C4.78 11 4 11.78 4 12.75V18.25C4 19.22 4.78 20 5.75 20H18.25C19.22 20 20 19.22 20 18.25V12.75C20 11.78 19.22 11 18.25 11H17"
             stroke="currentColor"
             stroke-width="1.8"
             stroke-linecap="round"
@@ -714,7 +781,14 @@ main {
         type="button"
         aria-label="Close"
       >
-        ×
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path
+            d="M3 3L13 13M13 3L3 13"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+          />
+        </svg>
       </button>
     </div>
 
@@ -723,9 +797,7 @@ main {
         <label for="insta">Instagram profile</label>
 
         <div class="instagram-input">
-          <span class="instagram-prefix">
-            instagram.com/
-          </span>
+          <span class="instagram-prefix">instagram.com/</span>
 
           <input
             id="insta"
@@ -795,7 +867,14 @@ main {
         type="button"
         aria-label="Close"
       >
-        ×
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path
+            d="M3 3L13 13M13 3L3 13"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+          />
+        </svg>
       </button>
     </div>
 
@@ -815,12 +894,74 @@ main {
     <div class="steps" id="installSteps"></div>
 
     <button
-      class="ghost"
+      class="got-it"
       data-close="install"
       type="button"
     >
       Got it
     </button>
+  </div>
+</div>
+
+<!-- CUSTOM REPORT CONFIRMATION -->
+
+<div
+  class="overlay"
+  id="reportModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="reportTitle"
+>
+  <div class="sheet report-sheet">
+    <div class="top">
+      <h2 id="reportTitle">Report profile?</h2>
+
+      <button
+        class="close"
+        id="reportClose"
+        type="button"
+        aria-label="Close"
+      >
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path
+            d="M3 3L13 13M13 3L3 13"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <p class="report-description">
+      Are you sure you want to report this profile?
+      It will be removed from your current session
+      and submitted for review.
+    </p>
+
+    <div class="report-actions">
+      <button
+        class="report-action report-cancel"
+        id="reportCancel"
+        type="button"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="report-action report-confirm"
+        id="reportConfirm"
+        type="button"
+      >
+        Report profile
+      </button>
+    </div>
+
+    <div
+      class="report-error"
+      id="reportError"
+      role="alert"
+    ></div>
   </div>
 </div>
 
@@ -900,6 +1041,8 @@ let idx = 0;
 let filter = "all";
 let deferredPrompt = null;
 let reporting = false;
+let pendingReport = null;
+let previewUrl = null;
 
 const $ = selector =>
   document.querySelector(selector);
@@ -926,7 +1069,7 @@ function randomIndex(length) {
   return Math.floor(Math.random() * length);
 }
 
-/* LOAD DATABASE PROFILES */
+/* LOAD PROFILES */
 
 async function load() {
   if (!connected) {
@@ -954,18 +1097,13 @@ async function load() {
 
     const { data, error } = await query;
 
-    if (error) {
-      throw error;
-    }
+    if (error) throw error;
 
     profiles = data || [];
     apply();
 
   } catch (error) {
-    console.error(
-      "Could not load profiles:",
-      error
-    );
+    console.error("Could not load profiles:", error);
 
     profiles = [];
     apply();
@@ -979,7 +1117,7 @@ async function load() {
   }
 }
 
-/* FILTER PROFILES */
+/* GENDER FILTER */
 
 function apply() {
   shown = (
@@ -988,9 +1126,7 @@ function apply() {
       : profiles.filter(
           profile => profile.gender === filter
         )
-  ).filter(
-    profile => !profile.reported
-  );
+  ).filter(profile => !profile.reported);
 
   idx = shown.length
     ? randomIndex(shown.length)
@@ -1005,13 +1141,12 @@ function getProfileViews(profile) {
   if (
     profile.profile_views !== null &&
     profile.profile_views !== undefined &&
-    Number.isFinite(
-      Number(profile.profile_views)
-    )
+    Number.isFinite(Number(profile.profile_views))
   ) {
     return Number(profile.profile_views);
   }
 
+  // Demo fallback when the database has no view count.
   const key =
     "instapeople_views_" +
     String(
@@ -1020,7 +1155,13 @@ function getProfileViews(profile) {
       "profile"
     );
 
-  let stored = localStorage.getItem(key);
+  let stored = null;
+
+  try {
+    stored = localStorage.getItem(key);
+  } catch (error) {
+    console.warn("Local storage unavailable:", error);
+  }
 
   if (stored === null) {
     const seed = String(
@@ -1030,30 +1171,26 @@ function getProfileViews(profile) {
     )
       .split("")
       .reduce(
-        (sum, char) =>
-          sum + char.charCodeAt(0),
+        (sum, char) => sum + char.charCodeAt(0),
         0
       );
 
-    stored = String(
-      40 + (seed % 1960)
-    );
+    stored = String(40 + (seed % 1960));
 
-    localStorage.setItem(
-      key,
-      stored
-    );
+    try {
+      localStorage.setItem(key, stored);
+    } catch (error) {
+      console.warn("Could not save view count:", error);
+    }
   }
 
   return Number(stored);
 }
 
-/* CREATE ONE PROFILE CARD */
+/* PROFILE CARD */
 
 function card(profile) {
-  const element =
-    document.createElement("div");
-
+  const element = document.createElement("div");
   element.className = "card";
 
   element.innerHTML = `
@@ -1079,150 +1216,121 @@ function card(profile) {
     >!</button>
   `;
 
-  const reportButton =
-    element.querySelector(".report-btn");
-
-  reportButton.addEventListener(
-    "click",
-    event => {
+  element
+    .querySelector(".report-btn")
+    .addEventListener("click", event => {
       event.stopPropagation();
-
-      reportProfile(
-        profile,
-        reportButton
-      );
-    }
-  );
+      openReportModal(profile);
+    });
 
   return element;
 }
 
-/* DISPLAY ONLY ONE CARD */
+/* DISPLAY ONE CARD */
 
 function render() {
   deck.innerHTML = "";
 
-  if (
-    !shown.length ||
-    idx >= shown.length
-  ) {
+  if (!shown.length || idx >= shown.length) {
     deck.style.display = "none";
     empty.style.display = "grid";
-
     $("#actions").style.display = "none";
-
     return;
   }
 
   deck.style.display = "block";
   empty.style.display = "none";
-
   $("#actions").style.display = "grid";
 
-  const currentProfile = shown[idx];
-
-  deck.append(
-    card(currentProfile)
-  );
+  deck.append(card(shown[idx]));
 }
 
-/* NEXT BUTTON: RANDOM DIFFERENT PROFILE */
+/* RANDOM NEXT: NO IMMEDIATE REPEAT */
 
 function nextProfile() {
-  if (
-    reporting ||
-    shown.length <= 1
-  ) {
-    return;
-  }
+  if (reporting || shown.length <= 1) return;
 
-  const currentId =
-    shown[idx].id;
+  const currentId = shown[idx].id;
 
-  const alternatives =
-    shown.filter(
-      profile =>
-        profile.id !== currentId
-    );
+  const alternatives = shown.filter(
+    profile => profile.id !== currentId
+  );
 
-  if (!alternatives.length) {
-    return;
-  }
+  if (!alternatives.length) return;
 
   const randomProfile =
-    alternatives[
-      randomIndex(
-        alternatives.length
-      )
-    ];
+    alternatives[randomIndex(alternatives.length)];
 
   idx = shown.findIndex(
-    profile =>
-      profile.id === randomProfile.id
+    profile => profile.id === randomProfile.id
   );
 
   render();
 }
 
-/* REPORT PROFILE */
+/* OPEN CUSTOM REPORT MODAL */
 
-async function reportProfile(
-  profile,
-  button
-) {
-  if (reporting) {
-    return;
-  }
+function openReportModal(profile) {
+  if (reporting) return;
 
-  const confirmed =
-    window.confirm(
-      "Report this profile?"
-    );
+  pendingReport = profile;
 
-  if (!confirmed) {
-    return;
-  }
+  $("#reportError").textContent = "";
+  $("#reportConfirm").textContent = "Report profile";
+  $("#reportConfirm").disabled = false;
+  $("#reportCancel").disabled = false;
+  $("#reportClose").disabled = false;
+
+  $("#reportModal").classList.add("show");
+  $("#reportCancel").focus();
+}
+
+/* CLOSE CUSTOM REPORT MODAL */
+
+function closeReportModal() {
+  if (reporting) return;
+
+  $("#reportModal").classList.remove("show");
+  pendingReport = null;
+  $("#reportError").textContent = "";
+}
+
+$("#reportCancel").onclick = closeReportModal;
+$("#reportClose").onclick = closeReportModal;
+
+/* SUBMIT REPORT THROUGH SUPABASE RPC */
+
+$("#reportConfirm").onclick = async () => {
+  if (reporting || !pendingReport) return;
+
+  const profile = pendingReport;
 
   reporting = true;
-  button.disabled = true;
+
+  $("#reportConfirm").disabled = true;
+  $("#reportCancel").disabled = true;
+  $("#reportClose").disabled = true;
+  $("#reportConfirm").textContent = "Reporting...";
+  $("#reportError").textContent = "";
 
   $("#no").disabled = true;
   $("#yes").disabled = true;
 
   try {
     if (connected) {
-      const {
-        data,
-        error
-      } = await sb
-        .from("profiles")
-        .update({
-          reported: true
-        })
-        .eq(
-          "id",
-          profile.id
-        )
-        .eq(
-          "reported",
-          false
-        )
-        .select("id");
+      // Calls the SQL function report_profile.
+      // Does not require UPDATE permission on profiles.
+      const { error } = await sb.rpc(
+        "report_profile",
+        {
+          p_profile_id: profile.id
+        }
+      );
 
-      if (error) {
-        throw error;
-      }
-
-      if (
-        !data ||
-        data.length !== 1
-      ) {
-        throw new Error(
-          "The report could not be saved. Check database permissions."
-        );
-      }
+      if (error) throw error;
     }
 
+    // Hide this profile for the current visitor.
     profile.reported = true;
 
     profiles = profiles.filter(
@@ -1234,153 +1342,105 @@ async function reportProfile(
     );
 
     idx = shown.length
-      ? randomIndex(
-          shown.length
-        )
+      ? randomIndex(shown.length)
       : 0;
+
+    $("#reportModal").classList.remove("show");
+    pendingReport = null;
 
     render();
 
   } catch (error) {
-    console.error(
-      "Report failed:",
-      error
-    );
+    console.error("Report failed:", error);
 
-    alert(
-      "Could not report this profile. Please try again."
-    );
-
-    button.disabled = false;
+    $("#reportError").textContent =
+      error.message ||
+      "Could not report this profile. Please try again.";
 
   } finally {
     reporting = false;
 
+    $("#reportConfirm").disabled = false;
+    $("#reportCancel").disabled = false;
+    $("#reportClose").disabled = false;
+    $("#reportConfirm").textContent = "Report profile";
+
     $("#no").disabled = false;
     $("#yes").disabled = false;
   }
-}
+};
 
-/* GENDER FILTER */
+/* GENDER MENU */
 
-$("#genderSelectBtn").onclick =
-  event => {
-    event.stopPropagation();
+$("#genderSelectBtn").onclick = event => {
+  event.stopPropagation();
 
-    const wrapper =
-      $(".gender-select-wrap");
+  const wrapper = $(".gender-select-wrap");
+  wrapper.classList.toggle("open");
 
-    wrapper.classList.toggle(
-      "open"
+  $("#genderSelectBtn").setAttribute(
+    "aria-expanded",
+    wrapper.classList.contains("open")
+  );
+};
+
+$("#genderMenu").onclick = event => {
+  const option = event.target.closest(".gender-option");
+
+  if (!option) return;
+
+  filter = option.dataset.gender;
+
+  $("#genderSelectLabel").textContent =
+    option.querySelector("span").textContent;
+
+  document
+    .querySelectorAll(".gender-option")
+    .forEach(button => {
+      button.classList.remove("active");
+    });
+
+  option.classList.add("active");
+
+  $(".gender-select-wrap").classList.remove("open");
+
+  $("#genderSelectBtn").setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+  apply();
+};
+
+document.addEventListener("click", event => {
+  if (!event.target.closest(".gender-select-wrap")) {
+    $(".gender-select-wrap").classList.remove("open");
+
+    $("#genderSelectBtn").setAttribute(
+      "aria-expanded",
+      "false"
     );
-
-    $("#genderSelectBtn")
-      .setAttribute(
-        "aria-expanded",
-        wrapper.classList.contains(
-          "open"
-        )
-      );
-  };
-
-$("#genderMenu").onclick =
-  event => {
-    const option =
-      event.target.closest(
-        ".gender-option"
-      );
-
-    if (!option) {
-      return;
-    }
-
-    filter =
-      option.dataset.gender;
-
-    $("#genderSelectLabel")
-      .textContent =
-        option.querySelector(
-          "span"
-        ).textContent;
-
-    document
-      .querySelectorAll(
-        ".gender-option"
-      )
-      .forEach(
-        button =>
-          button.classList.remove(
-            "active"
-          )
-      );
-
-    option.classList.add(
-      "active"
-    );
-
-    $(".gender-select-wrap")
-      .classList.remove(
-        "open"
-      );
-
-    $("#genderSelectBtn")
-      .setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-    apply();
-  };
-
-document.addEventListener(
-  "click",
-  event => {
-    if (
-      !event.target.closest(
-        ".gender-select-wrap"
-      )
-    ) {
-      $(".gender-select-wrap")
-        .classList.remove(
-          "open"
-        );
-
-      $("#genderSelectBtn")
-        .setAttribute(
-          "aria-expanded",
-          "false"
-        );
-    }
   }
-);
+});
 
 /* NEXT BUTTON */
 
-$("#no").onclick = () => {
-  nextProfile();
-};
+$("#no").onclick = nextProfile;
 
 /* VIEW PROFILE BUTTON */
 
 $("#yes").onclick = () => {
-  if (reporting) {
-    return;
-  }
+  if (reporting) return;
 
-  const profile =
-    shown[idx];
+  const profile = shown[idx];
 
-  if (!profile) {
-    return;
-  }
+  if (!profile) return;
 
-  const username =
-    (
-      profile.instagram_username ||
-      ""
-    )
-      .replace("@", "")
-      .trim();
+  const username = (
+    profile.instagram_username || ""
+  )
+    .replace(/^@/, "")
+    .trim();
 
   if (username) {
     window.open(
@@ -1392,394 +1452,259 @@ $("#yes").onclick = () => {
     );
   }
 
-  if (
-    connected &&
-    profile.id
-  ) {
-    sb.rpc(
-      "increment_profile_view",
-      {
-        profile_id:
-          profile.id
+  if (connected && profile.id) {
+    sb.rpc("increment_profile_view", {
+      profile_id: profile.id
+    }).then(({ error }) => {
+      if (error) {
+        console.warn(
+          "Could not count profile view:",
+          error.message
+        );
       }
-    ).then(
-      ({ error }) => {
-        if (error) {
-          console.warn(
-            "Could not count profile view:",
-            error.message
-          );
-        }
-      }
-    );
+    });
   }
 
   nextProfile();
 };
 
-/* MODAL CONTROLS */
+/* CLOSE REGISTRATION AND INSTALL MODALS */
 
 document
-  .querySelectorAll(
-    "[data-close]"
-  )
-  .forEach(
-    button => {
-      button.onclick = () => {
-        $(
-          "#" +
-          button.dataset.close
-        ).classList.remove(
-          "show"
-        );
-      };
-    }
-  );
+  .querySelectorAll("[data-close]")
+  .forEach(button => {
+    button.onclick = () => {
+      $("#" + button.dataset.close)
+        .classList.remove("show");
+    };
+  });
 
-$("#addPersonBtn").onclick =
-  () => {
-    $("#msg").textContent = "";
-
-    $("#addPerson")
-      .classList.add(
-        "show"
-      );
-  };
+$("#addPersonBtn").onclick = () => {
+  $("#msg").textContent = "";
+  $("#addPerson").classList.add("show");
+};
 
 /* IMAGE PREVIEW */
 
-$("#photo").onchange =
-  event => {
-    const file =
-      event.target.files[0];
+$("#photo").onchange = event => {
+  const file = event.target.files[0];
 
-    if (!file) {
-      $("#photoPreviewWrap")
-        .style.display =
-          "none";
+  if (previewUrl) {
+    URL.revokeObjectURL(previewUrl);
+    previewUrl = null;
+  }
 
-      return;
-    }
+  if (!file) {
+    $("#photoPreviewWrap").style.display = "none";
+    return;
+  }
 
-    $("#photoPreview").src =
-      URL.createObjectURL(
-        file
-      );
+  previewUrl = URL.createObjectURL(file);
 
-    $("#photoPreviewWrap")
-      .style.display =
-        "block";
-  };
+  $("#photoPreview").src = previewUrl;
+  $("#photoPreviewWrap").style.display = "block";
+};
 
 /* REGISTER PERSON */
 
-$("#personForm").onsubmit =
-  async event => {
-    event.preventDefault();
+$("#personForm").onsubmit = async event => {
+  event.preventDefault();
 
-    let instagram =
-      $("#insta")
-        .value
-        .trim();
+  let instagram = $("#insta").value.trim();
 
-    instagram = instagram
-      .replace(
-        /^https?:\/\/(www\.)?instagram\.com\//i,
-        ""
-      )
-      .replace(
-        /^www\.instagram\.com\//i,
-        ""
-      )
-      .replace(
-        /^instagram\.com\//i,
-        ""
-      )
-      .replace(
-        /^@/,
-        ""
-      )
-      .split(
-        /[/?#]/
-      )[0]
-      .trim();
+  instagram = instagram
+    .replace(
+      /^https?:\/\/(www\.)?instagram\.com\//i,
+      ""
+    )
+    .replace(/^www\.instagram\.com\//i, "")
+    .replace(/^instagram\.com\//i, "")
+    .replace(/^@/, "")
+    .split(/[/?#]/)[0]
+    .trim();
 
-    const gender =
-      $("#gender").value;
+  const gender = $("#gender").value;
+  const file = $("#photo").files[0];
 
-    const file =
-      $("#photo")
-        .files[0];
+  if (!instagram || !gender || !file) {
+    $("#msg").textContent = "Complete every field.";
+    return;
+  }
 
-    if (
-      !instagram ||
-      !gender ||
-      !file
-    ) {
-      $("#msg")
-        .textContent =
-          "Complete every field.";
+  const button = $("#personSubmit");
+  button.disabled = true;
 
-      return;
-    }
+  $("#msg").textContent = connected
+    ? "Uploading profile..."
+    : "Registering demo profile...";
 
-    const button =
-      $("#personSubmit");
+  try {
+    let image_url;
 
-    button.disabled = true;
-    button.style.opacity = ".6";
+    if (connected) {
+      const ext = (
+        file.name.split(".").pop() || "jpg"
+      ).toLowerCase();
 
-    $("#msg").textContent =
-      connected
-        ? "Uploading profile..."
-        : "Registering demo profile...";
+      const safeUser = instagram.replace(
+        /[^a-zA-Z0-9._-]/g,
+        "_"
+      );
 
-    try {
-      let image_url;
+      const path =
+        "public/" +
+        safeUser +
+        "-" +
+        Date.now() +
+        "." +
+        ext;
 
-      if (connected) {
-        const ext =
-          (
-            file.name
-              .split(".")
-              .pop() ||
-            "jpg"
-          ).toLowerCase();
-
-        const safeUser =
-          instagram.replace(
-            /[^a-zA-Z0-9._-]/g,
-            "_"
-          );
-
-        const path =
-          "public/" +
-          safeUser +
-          "-" +
-          Date.now() +
-          "." +
-          ext;
-
-        const upload =
-          await sb.storage
-            .from(
-              "profile-images"
-            )
-            .upload(
-              path,
-              file,
-              {
-                cacheControl:
-                  "3600",
-                upsert:
-                  false
-              }
-            );
-
-        if (
-          upload.error
-        ) {
-          throw upload.error;
-        }
-
-        image_url =
-          sb.storage
-            .from(
-              "profile-images"
-            )
-            .getPublicUrl(
-              path
-            )
-            .data
-            .publicUrl;
-
-        const inserted =
-          await sb
-            .from(
-              "profiles"
-            )
-            .insert({
-              instagram_username:
-                instagram,
-              gender,
-              image_url,
-              reported:
-                false
-            })
-            .select()
-            .single();
-
-        if (
-          inserted.error
-        ) {
-          throw inserted.error;
-        }
-
-        profiles.unshift({
-          ...inserted.data,
-          name:
-            "@" +
-            inserted.data
-              .instagram_username
+      const upload = await sb.storage
+        .from("profile-images")
+        .upload(path, file, {
+          cacheControl: "3600",
+          upsert: false
         });
 
-      } else {
-        image_url =
-          URL.createObjectURL(
-            file
-          );
+      if (upload.error) throw upload.error;
 
-        profiles.unshift({
-          id:
-            "local-" +
-            Date.now(),
-          name:
-            "@" +
-            instagram,
-          instagram_username:
-            instagram,
+      image_url = sb.storage
+        .from("profile-images")
+        .getPublicUrl(path)
+        .data
+        .publicUrl;
+
+      const inserted = await sb
+        .from("profiles")
+        .insert({
+          instagram_username: instagram,
           gender,
           image_url,
-          reported:
-            false
-        });
-      }
+          reported: false
+        })
+        .select()
+        .single();
 
-      $("#msg")
-        .textContent =
-          "Person registered ✓";
+      if (inserted.error) throw inserted.error;
 
-      $("#personForm")
-        .reset();
+      profiles.unshift({
+        ...inserted.data,
+        name: "@" + inserted.data.instagram_username
+      });
 
-      $("#photoPreviewWrap")
-        .style.display =
-          "none";
+    } else {
+      image_url = URL.createObjectURL(file);
 
-      apply();
-
-      setTimeout(
-        () => {
-          $("#addPerson")
-            .classList.remove(
-              "show"
-            );
-        },
-        550
-      );
-
-    } catch (error) {
-      console.error(
-        error
-      );
-
-      $("#msg")
-        .textContent =
-          error.message ||
-          "Could not register person.";
-
-    } finally {
-      button.disabled = false;
-      button.style.opacity = "1";
+      profiles.unshift({
+        id: "local-" + Date.now(),
+        name: "@" + instagram,
+        instagram_username: instagram,
+        gender,
+        image_url,
+        reported: false
+      });
     }
-  };
 
-/* INSTALL INSTRUCTIONS */
+    $("#msg").textContent = "Person registered ✓";
+
+    $("#personForm").reset();
+    $("#photoPreviewWrap").style.display = "none";
+
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+      previewUrl = null;
+    }
+
+    apply();
+
+    setTimeout(() => {
+      $("#addPerson").classList.remove("show");
+    }, 550);
+
+  } catch (error) {
+    console.error(error);
+
+    $("#msg").textContent =
+      error.message ||
+      "Could not register person.";
+
+  } finally {
+    button.disabled = false;
+  }
+};
+
+/* INSTALL HELP */
 
 function installGuide() {
-  $("#install")
-    .classList.add(
-      "show"
-    );
+  $("#install").classList.add("show");
 
-  $("#installNow")
-    .style.display =
-      deferredPrompt
-        ? "block"
-        : "none";
+  $("#installNow").style.display =
+    deferredPrompt ? "block" : "none";
 
-  $("#installSteps")
-    .innerHTML = `
-      <div class="install-section">
-        <h3>iOS</h3>
-        <p>1. Open InstaPeople.app in Safari.</p>
-        <p>2. Tap the Share button.</p>
-        <p>3. Tap <b>Add to Home Screen</b>.</p>
-        <p>4. Tap <b>Add</b>.</p>
-      </div>
+  $("#installSteps").innerHTML = `
+    <div class="install-section">
+      <h3>iOS</h3>
+      <p>1. Open InstaPeople.app in Safari.</p>
+      <p>2. Tap the Share button.</p>
+      <p>3. Tap <b>Add to Home Screen</b>.</p>
+      <p>4. Tap <b>Add</b>.</p>
+    </div>
 
-      <div class="install-section">
-        <h3>Android</h3>
-        <p>1. Open InstaPeople.app in Chrome.</p>
-        <p>2. Tap the ⋮ menu.</p>
-        <p>3. Tap <b>Add to Home screen</b> or
-           <b>Install app</b>.</p>
-        <p>4. Confirm installation.</p>
-      </div>
-    `;
+    <div class="install-section">
+      <h3>Android</h3>
+      <p>1. Open InstaPeople.app in Chrome.</p>
+      <p>2. Tap the ⋮ menu.</p>
+      <p>
+        3. Tap <b>Add to Home screen</b>
+        or <b>Install app</b>.
+      </p>
+      <p>4. Confirm installation.</p>
+    </div>
+  `;
 }
 
-$("#installHelp").onclick =
-  installGuide;
+$("#installHelp").onclick = installGuide;
 
 window.addEventListener(
   "beforeinstallprompt",
   event => {
     event.preventDefault();
-
-    deferredPrompt =
-      event;
+    deferredPrompt = event;
   }
 );
 
-$("#installNow").onclick =
-  async () => {
-    if (
-      !deferredPrompt
-    ) {
-      return;
-    }
+$("#installNow").onclick = async () => {
+  if (!deferredPrompt) return;
 
-    deferredPrompt.prompt();
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
 
-    await deferredPrompt
-      .userChoice;
+  deferredPrompt = null;
+  $("#install").classList.remove("show");
+};
 
-    deferredPrompt = null;
+/* ESCAPE CLOSES MODALS; NO SWIPE NAVIGATION */
 
-    $("#install")
-      .classList.remove(
-        "show"
-      );
-  };
+document.addEventListener("keydown", event => {
+  if (event.key !== "Escape") return;
 
-/* ESC CLOSES MODALS; NO SWIPE CONTROLS */
+  document
+    .querySelectorAll(".overlay.show")
+    .forEach(modal => {
+      if (modal.id !== "reportModal") {
+        modal.classList.remove("show");
+      }
+    });
 
-document.addEventListener(
-  "keydown",
-  event => {
-    if (
-      event.key ===
-      "Escape"
-    ) {
-      document
-        .querySelectorAll(
-          ".overlay.show"
-        )
-        .forEach(
-          modal =>
-            modal.classList.remove(
-              "show"
-            )
-        );
+  closeReportModal();
 
-      $(".gender-select-wrap")
-        .classList.remove(
-          "open"
-        );
-    }
-  }
-);
+  $(".gender-select-wrap").classList.remove("open");
+
+  $("#genderSelectBtn").setAttribute(
+    "aria-expanded",
+    "false"
+  );
+});
 
 /* INITIALIZE */
 
