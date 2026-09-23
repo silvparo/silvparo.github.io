@@ -6,7 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f5f4f0">
 <title>InstaPeople.app</title>
+
+<!-- WEBSITE ICONS -->
+<link rel="icon" type="image/png" href="InstaPeople.png">
+<link rel="shortcut icon" type="image/x-icon" href="InstaPeople.ico">
+<link rel="apple-touch-icon" href="InstaPeople.png">
 <link rel="manifest" href="manifest.webmanifest">
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
@@ -368,7 +374,7 @@ main {
   letter-spacing: normal;
 }
 
-/* CENTERED SMALL CLOSE ICON */
+/* CLOSE ICON */
 
 .close {
   width: 35px;
@@ -518,7 +524,7 @@ main {
   padding-left: 2px;
 }
 
-/* CUSTOM REPORT MODAL */
+/* REPORT MODAL */
 
 .report-sheet {
   width: min(100%, 420px);
@@ -903,7 +909,7 @@ main {
   </div>
 </div>
 
-<!-- CUSTOM REPORT CONFIRMATION -->
+<!-- REPORT CONFIRMATION -->
 
 <div
   class="overlay"
@@ -1268,7 +1274,7 @@ function nextProfile() {
   render();
 }
 
-/* OPEN CUSTOM REPORT MODAL */
+/* OPEN REPORT MODAL */
 
 function openReportModal(profile) {
   if (reporting) return;
@@ -1285,7 +1291,7 @@ function openReportModal(profile) {
   $("#reportCancel").focus();
 }
 
-/* CLOSE CUSTOM REPORT MODAL */
+/* CLOSE REPORT MODAL */
 
 function closeReportModal() {
   if (reporting) return;
