@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#f5f4f0">
 <title>InstaPeople.app</title>
 
@@ -29,21 +29,37 @@
   --no: #ef4444;
 }
 
+/* DISABLE ALL PAGE SCROLLING */
+
 html {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 body {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
+  height: 100dvh;
   margin: 0;
   background: var(--bg);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+
+/* APP LAYOUT */
+
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 button, input, select {
@@ -59,11 +75,12 @@ button {
 header {
   width: min(100%, 800px);
   margin: 0 auto;
-  padding: 12px 10px;
+  padding: 12px 10px 8px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .brand {
@@ -72,7 +89,6 @@ header {
   font-size: 24px;
   line-height: 34px;
   font-weight: 900;
-  letter-spacing: normal;
 }
 
 .header-actions {
@@ -212,26 +228,30 @@ header {
 
 main {
   width: min(100%, 800px);
+  min-height: 0;
+  flex: 1;
   margin: 0 auto;
-  padding: 10px 10px 24px;
+  padding: 6px 10px max(10px, env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  overflow: hidden;
 }
 
 .deck {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
-  min-height: 260px;
-  max-height: 65vh;
+  min-height: 0;
+  flex: 1;
   border-radius: 22px;
+  overflow: hidden;
 }
 
 .empty {
   display: none;
   width: 100%;
-  min-height: 260px;
+  min-height: 0;
+  flex: 1;
   padding: 30px;
   border: 1px dashed #c9c7c0;
   border-radius: 28px;
@@ -301,12 +321,13 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .action {
   width: 100%;
-  min-height: 70px;
-  padding: 18px 10px;
+  min-height: 64px;
+  padding: 14px 10px;
   border: 0;
   border-radius: 18px;
   color: white;
@@ -339,10 +360,11 @@ main {
   z-index: 100;
   display: none;
   place-items: center;
-  padding: 18px;
+  padding: 12px;
   background: #0007;
   backdrop-filter: blur(8px);
-  overflow-y: auto;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .overlay.show {
@@ -351,10 +373,9 @@ main {
 
 .sheet {
   width: min(100%, 800px);
-  max-height: min(85dvh, 650px);
-  padding: 25px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  max-height: calc(100dvh - 24px);
+  padding: clamp(12px, 3vh, 25px);
+  overflow: hidden;
   background: white;
   border-radius: 27px;
   box-shadow: 0 30px 100px #0004;
@@ -365,16 +386,13 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .top h2 {
   margin: 0;
-  font-size: 23px;
-  letter-spacing: normal;
+  font-size: clamp(17px, 3vh, 23px);
 }
-
-/* CLOSE ICON */
 
 .close {
   width: 35px;
@@ -398,7 +416,7 @@ main {
 }
 
 .field {
-  margin: 13px 0;
+  margin: 10px 0;
 }
 
 .field label {
@@ -411,7 +429,7 @@ main {
 .field input,
 .field select {
   width: 100%;
-  padding: 13px;
+  padding: 11px;
   border: 1px solid #ddd;
   border-radius: 13px;
   outline: none;
@@ -420,7 +438,7 @@ main {
 .submit {
   display: block;
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   border: 0;
   border-radius: 14px;
   background: #111;
@@ -443,12 +461,10 @@ main {
   font-size: 12px;
 }
 
-/* GOT IT BUTTON */
-
 .got-it {
   width: 100%;
-  min-height: 46px;
-  padding: 13px;
+  min-height: 42px;
+  padding: 11px;
   border: 0;
   border-radius: 14px;
   background: #111;
@@ -469,15 +485,15 @@ main {
 }
 
 .steps {
-  margin: 16px 0;
-  padding: 15px 17px;
+  margin: 12px 0;
+  padding: 10px 14px;
   border-radius: 17px;
   background: #f6f5f1;
   text-align: left;
 }
 
 .install-section {
-  padding: 12px 0;
+  padding: 8px 0;
   border-top: 1px solid var(--line);
 }
 
@@ -486,15 +502,15 @@ main {
 }
 
 .install-section h3 {
-  margin: 0 0 8px;
-  font-size: 16px;
+  margin: 0 0 6px;
+  font-size: 15px;
 }
 
 .install-section p {
-  margin: 6px 0;
+  margin: 4px 0;
   color: #555;
-  font-size: 14px;
-  line-height: 1.45;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 /* REGISTRATION */
@@ -582,13 +598,13 @@ main {
 
 @media (max-width: 650px) {
   header {
-    padding: 10px;
-
+    padding: 8px 10px 5px;
+    gap: 5px;
   }
 
   .brand {
     font-size: 22px;
-    line-height: 32px;
+    line-height: 30px;
   }
 
   .header-actions {
@@ -630,19 +646,17 @@ main {
   }
 
   main {
-    padding: 10px 10px 24px;
-  }
-
-  .deck {
-    max-height: 65vh;
+    padding: 5px 10px max(8px, env(safe-area-inset-bottom));
+    gap: 8px;
   }
 
   .action {
-    min-height: 64px;
+    min-height: 58px;
+    padding: 12px 8px;
   }
 
   .sheet {
-    padding: 20px;
+    padding: 16px;
   }
 }
 
@@ -656,10 +670,62 @@ main {
     font-size: 11px;
   }
 }
+
+/* SHORT SCREENS */
+
+@media (max-height: 650px) {
+  header {
+    padding-top: 5px;
+    padding-bottom: 4px;
+    gap: 3px;
+  }
+
+  .brand {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  main {
+    gap: 6px;
+  }
+
+  .action {
+    min-height: 46px;
+    padding: 8px;
+  }
+
+  .field {
+    margin: 7px 0;
+  }
+
+  .field input,
+  .field select {
+    padding: 8px;
+  }
+
+  .sheet {
+    padding: 12px;
+  }
+
+  .top {
+    margin-bottom: 8px;
+  }
+
+  .steps {
+    margin: 8px 0;
+    padding: 8px;
+  }
+
+  .install-section {
+    padding: 5px 0;
+  }
+}
 </style>
 </head>
 
 <body>
+
+<div class="app">
 
 <header>
   <div class="brand">InstaPeople.app</div>
@@ -774,6 +840,8 @@ main {
   </div>
 </main>
 
+</div>
+
 <!-- REGISTER PERSON -->
 
 <div class="overlay" id="addPerson">
@@ -838,12 +906,12 @@ main {
 
       <div
         id="photoPreviewWrap"
-        style="display:none;margin:14px 0;text-align:center"
+        style="display:none;margin:10px 0;text-align:center"
       >
         <img
           id="photoPreview"
           alt="Preview"
-          style="width:112px;height:112px;object-fit:cover;border-radius:22px"
+          style="width:90px;height:90px;object-fit:cover;border-radius:18px"
         >
       </div>
 
@@ -884,7 +952,7 @@ main {
       </button>
     </div>
 
-    <p style="color:#777;font-size:13px;line-height:1.5">
+    <p style="color:#777;font-size:13px;line-height:1.4">
       Use InstaPeople.app like an app with its own
       icon and full-screen window.
     </p>
@@ -1152,7 +1220,6 @@ function getProfileViews(profile) {
     return Number(profile.profile_views);
   }
 
-  // Demo fallback when the database has no view count.
   const key =
     "instapeople_views_" +
     String(
@@ -1324,8 +1391,6 @@ $("#reportConfirm").onclick = async () => {
 
   try {
     if (connected) {
-      // Calls the SQL function report_profile.
-      // Does not require UPDATE permission on profiles.
       const { error } = await sb.rpc(
         "report_profile",
         {
@@ -1336,7 +1401,6 @@ $("#reportConfirm").onclick = async () => {
       if (error) throw error;
     }
 
-    // Hide this profile for the current visitor.
     profile.reported = true;
 
     profiles = profiles.filter(
@@ -1689,7 +1753,7 @@ $("#installNow").onclick = async () => {
   $("#install").classList.remove("show");
 };
 
-/* ESCAPE CLOSES MODALS; NO SWIPE NAVIGATION */
+/* ESCAPE CLOSES MODALS */
 
 document.addEventListener("keydown", event => {
   if (event.key !== "Escape") return;
@@ -1710,6 +1774,53 @@ document.addEventListener("keydown", event => {
     "aria-expanded",
     "false"
   );
+});
+
+/* DISABLE WHEEL AND TOUCH SCROLLING */
+
+document.addEventListener(
+  "wheel",
+  event => {
+    event.preventDefault();
+  },
+  { passive: false }
+);
+
+document.addEventListener(
+  "touchmove",
+  event => {
+    event.preventDefault();
+  },
+  { passive: false }
+);
+
+/* PREVENT SCROLL KEYS OUTSIDE FORM CONTROLS */
+
+document.addEventListener("keydown", event => {
+  const tag = event.target.tagName;
+
+  if (
+    tag === "INPUT" ||
+    tag === "TEXTAREA" ||
+    tag === "SELECT" ||
+    tag === "BUTTON"
+  ) {
+    return;
+  }
+
+  if (
+    [
+      "ArrowUp",
+      "ArrowDown",
+      "PageUp",
+      "PageDown",
+      "Home",
+      "End",
+      " "
+    ].includes(event.key)
+  ) {
+    event.preventDefault();
+  }
 });
 
 /* INITIALIZE */
