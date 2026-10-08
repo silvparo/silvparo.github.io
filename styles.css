@@ -12,15 +12,6 @@
 body{color:var(--body);background:var(--canvas)}
 .site-header{border-top:6px solid #ffd400;background:#fff}
 .heritage-masthead{padding-top:22px;padding-bottom:19px;gap:30px;align-items:center}
-.heritage-banner{display:block;width:min(53%,574px);aspect-ratio:574/251;position:relative;overflow:hidden;flex-shrink:0;outline-offset:4px;background:#ffd400;text-decoration:none;border:1px solid #e5dabb}
-.heritage-banner:hover{filter:saturate(1.06)}
-.banner-fallback{display:flex;position:absolute;inset:0;background:#d5ab48}
-.banner-gold{display:flex;flex-direction:column;justify-content:flex-start;gap:2px;width:37%;background:#ffd400;color:#19150b;transform:skewX(-12deg);margin-left:-20px;padding:19px 3px 12px 29px;font:clamp(12px,1.7vw,23px)/1.4 Georgia,'Times New Roman',serif;z-index:1}
-.banner-gold>span{transform:skewX(12deg)}
-.banner-gold .banner-mark{font-size:57px;line-height:1;align-self:center;margin-top:5px;color:#141311}
-.banner-gold .fallback-line{height:1px;background:#322b0a;margin-top:10px}
-.banner-fallback-photo{flex:1;background-image:url('assets/monreale-mosaik.jpg');background-position:50% 29%;background-size:cover;filter:saturate(.8)}
-.banner-original{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
 .header-contact{font-size:13px;line-height:1.85;text-align:right;color:#565044;flex:1}
 .header-contact .contact-label{display:block;font-weight:800;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:#8d6a03;padding-bottom:13px;margin-bottom:13px;border-bottom:1px solid #eee5cc}
 .header-contact b{font-size:15px;line-height:1.5;color:#29261d}
@@ -52,12 +43,8 @@ a,.doc-link{color:#785103}.doc-link{border-bottom:1px solid #d8b950}.doc-link:ho
 .site-footer{color:#877f6e}.site-footer a{color:#715318}.footer-links{gap:19px}
 .original-portrait{float:right;width:210px;margin:0 0 20px 26px;border:1px solid #ebdfba;background:#fff;padding:5px}
 .original-portrait img{width:100%;display:block}.original-portrait figcaption{font-size:11px;margin:7px;color:#7a725d;line-height:1.5}
-@media (max-width:930px){.heritage-banner{width:min(55%,574px)}.heritage-masthead{gap:18px}.header-contact{font-size:11px}.header-contact b{font-size:12px}.nav-inner a{color:#faf5ea}.nav-inner a:first-child{padding-left:10px}.nav-inner a:last-child{padding-right:10px}}
 @media (max-width:670px){
  .heritage-masthead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding-top:10px;padding-bottom:11px}
- .heritage-banner{width:100%;max-width:350px;grid-column:1;aspect-ratio:574/251;min-width:0}
- .banner-gold{font-size:clamp(9px,3vw,14px);padding-top:8px;padding-left:22px}
- .banner-gold .banner-mark{font-size:31px;margin-top:2px}
  .header-contact{display:none}
  .mobile-menu-btn{display:block;grid-column:2;align-self:center;color:#231d0b;border:1px solid #f1c234;background:#ffde42}
  .nav-wrap .nav-inner{padding:5px 20px}.nav-inner a{border-bottom:1px solid #514b39;color:#f8f5ee;font-size:12px;padding:13px 10px}
@@ -66,8 +53,6 @@ a,.doc-link{color:#785103}.doc-link{border-bottom:1px solid #d8b950}.doc-link:ho
  .original-portrait{float:none;margin:16px 0 24px;width:210px}
  main.sheet{margin-top:10px}
 }
-@media (max-width:385px){.heritage-banner{width:100%}.mobile-menu-btn{padding:8px 8px}.mobile-menu-btn .menu-btn-text{display:none}.banner-gold{padding-left:18px}}
-@media print{.heritage-banner{display:none!important}}
 
 
 /* Footer admin access – restrained, matching original yellow and charcoal palette */
@@ -113,3 +98,15 @@ a,.doc-link{color:#785103}.doc-link{border-bottom:1px solid #d8b950}.doc-link:ho
 .heritage-masthead{justify-content:flex-start;min-height:112px}
 .heritage-masthead .header-contact{text-align:left;font-size:13px}
 @media(max-width:670px){.heritage-masthead{min-height:70px;justify-content:space-between}.heritage-masthead .header-contact{display:block;font-size:11px;line-height:1.4}.heritage-masthead .header-contact br,.heritage-masthead .header-contact a{display:none}.heritage-masthead .header-contact b{display:block;font-size:12px}}
+
+/* Header ohne Banner: auch mobil sichtbar */
+.heritage-masthead { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+@media(max-width:670px) {
+  .heritage-masthead { display:flex; padding-top:14px; padding-bottom:14px; }
+  .header-contact { display:block; flex:1; text-align:left; font-size:11px; line-height:1.5; }
+  .header-contact .contact-label { margin-bottom:6px; padding-bottom:6px; font-size:10px; }
+  .header-contact b { font-size:12px; }
+  .mobile-menu-btn { display:block; flex-shrink:0; }
+}
+
+.unavailable-link { color:#666; cursor:default; text-decoration:none; font-size:.92rem; }
