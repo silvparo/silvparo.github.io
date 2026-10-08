@@ -110,3 +110,16 @@ a,.doc-link{color:#785103}.doc-link{border-bottom:1px solid #d8b950}.doc-link:ho
 }
 
 .unavailable-link { color:#666; cursor:default; text-decoration:none; font-size:.92rem; }
+
+
+/* Originalbanner ohne zusätzliche Texte, Overlay oder Fallback */
+.heritage-masthead{justify-content:space-between;min-height:0}
+.heritage-banner{display:block;flex:0 1 574px;width:53%;line-height:0}
+.heritage-banner .banner-original{display:block;width:100%;height:auto;object-fit:contain}
+.heritage-masthead .header-contact{text-align:right;flex:1}
+@media(max-width:670px){
+ .heritage-masthead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px}
+ .heritage-banner{width:100%;max-width:350px;grid-column:1}
+ .heritage-masthead .header-contact{display:none}
+ .mobile-menu-btn{grid-column:2}
+}
